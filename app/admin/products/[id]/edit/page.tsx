@@ -20,7 +20,7 @@ async function getProductById(id: number) {
 
 export default async function EditProductsPage({params}: {params: {id: string}}) {
     const product = await getProductById(parseInt(params.id))
-    console.log(product)
+    
   return (
     <>
         <Heading>Editar Producto : {product.name}</Heading>

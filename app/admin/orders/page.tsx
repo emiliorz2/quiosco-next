@@ -1,12 +1,12 @@
 "use client"
 import useSWR from "swr";
-import OrderCard from "@/components/admin/OrderCard";
-import Heading from "@/components/ui/Heading";
-import { OrderWithProducts } from "@/src/types";
+import OrderCard from "@/components/admin/OrderCard"
+import Heading from "@/components/ui/Heading"
+import { OrderWithProducts } from "@/src/types"
 
 
 
-export default function page() {
+export default function OrdersPage() {
 
   const url = "/admin/orders/api"
   const fetcher = () => fetch(url).then((res) => res.json()).then((data) => data)
