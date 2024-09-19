@@ -41,7 +41,7 @@ export const useStore = create<Store>((set, get) => ({
     },
     increaseQuantity: (id) => {
         set((state) => ({
-            order: state.order.map(item => item.id === item.id ? {
+            order: state.order.map(item => item.id === id ? {
                 ...item,
                 quantity: item.quantity + 1,
                 subtotal: (item.quantity + 1) * item.price
