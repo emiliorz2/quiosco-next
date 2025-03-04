@@ -8,7 +8,7 @@ import React from 'react'
 export default function CreateProductPage() {
   return (
     <>
-      <Heading>Nuevo producto</Heading>
+      <Heading>Agregar Nuevo producto</Heading>
 
       <AddProductForm >
         <ProductForm />
