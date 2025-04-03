@@ -14,7 +14,7 @@
   "dependencies": {
     "@heroicons/react": "^2.1.5",
     "@prisma/client": "^5.19.1",
-    "next": "^14.2.13",
+    "next": "15.2.4",
     "next-cloudinary": "^6.13.0",
     "quiosco-next": "file:",
     "react": "^18",
