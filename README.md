@@ -1,6 +1,6 @@
 # Mutz Pizzeria - Quiosco Next
 
-Aplicacion de quiosco para pedidos y panel admin de Mutz Pizzeria.
+Aplicacion interna de quiosco y panel admin para Mutz Pizzeria.
 
 ## Stack
 
@@ -12,39 +12,59 @@ Aplicacion de quiosco para pedidos y panel admin de Mutz Pizzeria.
 - Zustand
 - React Toastify
 
-## Branding aplicado
+## Branding
 
-- Paleta oscura con acentos rojos Mutz.
-- Tipografias `Outfit` (UI) y `Playfair Display` (titulos).
-- Fondo con overlay y cards elevadas.
-- Formato de precios en colones costarricenses (`es-CR`, `CRC`).
-- Sidebar, cards, tablas y formularios con estilo unificado.
+- UI oscura con acentos Mutz.
+- Tipografias `Outfit` y `Playfair Display`.
+- Moneda en CRC (`es-CR`).
 
 ## Requisitos
 
 - Node.js `>=20.9.0`
 - Base de datos PostgreSQL accesible desde `DATABASE_URL`
 
-## Configuracion
+## Variables de entorno
 
-1. Instala dependencias:
-
-```bash
-npm install
-```
-
-2. Configura variables en `.env`:
+Archivo `.env`:
 
 ```env
 DATABASE_URL="postgresql://..."
 ```
 
-3. Aplica esquema y seed:
+## Instalacion
+
+```bash
+npm install
+```
+
+## Base de datos y datos iniciales
+
+El seed actual importa datos desde export de Sanity.
+
+Debes tener esta carpeta en el root del proyecto (o en `public/`):
+
+`production-export-2026-02-15t00-38-27-315z`
+
+Contenido esperado:
+
+- `data.ndjson`
+- `assets.json`
+- `images/`
+
+Comandos:
 
 ```bash
 npx prisma migrate deploy
 npx prisma db seed
 ```
+
+El seed:
+
+- Crea categorias por tipo (`pizza`, `bread`, `dessert`, `drink`, `wine`)
+- Crea productos con estructura nueva (flags y orden)
+- Copia imagenes a `public/products`
+- Crea `siteSettings`
+- Regla especial: `Tiramisu` se asigna a `Postres`
 
 ## Scripts
 
@@ -55,6 +75,16 @@ npm run build
 npm run start
 ```
 
+## Estructura Prisma actual
+
+Modelos principales:
+
+- `Category` (incluye `type`, `icon`, `iconMissing`)
+- `Product` (incluye `sanityId`, `menuType`, `displayOrder`, `featured`, `isNew`, `isVeg`, `size`)
+- `Order`
+- `OrderProducts`
+- `SiteSettings`
+
 ## Rutas principales
 
 - Quiosco: `/order/[category]`
@@ -62,7 +92,9 @@ npm run start
 - Admin ordenes: `/admin/orders`
 - Admin productos: `/admin/products`
 
-## Assets usados
+## Assets
 
-- Logo: `public/logomutz.jpeg`
+- Logo UI: `public/mutz-logo.svg`
 - Fondo: `public/pizza-bg.jpeg`
+- Imagenes de productos generadas por seed: `public/products/*`
+
