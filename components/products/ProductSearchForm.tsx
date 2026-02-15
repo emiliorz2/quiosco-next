@@ -24,20 +24,20 @@ export default function ProductSearchForm() {
 
   return (
     <form 
-    className="flex items-center"
+    className="flex items-center gap-2"
     action={handleSearchForm}
     >
         <input 
         type="text" 
         placeholder="Buscar producto"
-        className="p-2 placeholder-gray-400 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent"
+        className="mutz-input"
         name="search"
         />
 
         <input
         type="submit"
         value={'Buscar'}
-        className="bg-indigo-600 uppercase p-2 text-white cursor-pointer"
+        className="mutz-btn-secondary cursor-pointer"
         />
 
     </form>

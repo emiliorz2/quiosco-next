@@ -1,4 +1,3 @@
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -8,41 +7,71 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model Category {
-  id        Int      @id @default(autoincrement())
-  name      String
-  slug      String
-  products  Product[]
+  id          Int       @id @default(autoincrement())
+  name        String
+  slug        String    @unique
+  type        String    @unique
+  icon        String?
+  iconMissing Boolean   @default(false)
+  products    Product[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }
 
 model Product {
-  id          Int      @id @default(autoincrement())
-  name        String
-  description String?
-  price       Float
-  image       String
-  categoryId  Int
-  category    Category @relation(fields: [categoryId], references: [id])
-  orderItems OrderProducts[]
+  id           Int             @id @default(autoincrement())
+  sanityId     String?         @unique
+  name         String
+  slug         String?
+  description  String?
+  price        Float
+  image        String          @default("placeholder.svg")
+  menuType     String          @default("pizza")
+  displayOrder Int             @default(999)
+  featured     Boolean         @default(false)
+  isNew        Boolean         @default(false)
+  isVeg        Boolean         @default(false)
+  size         String?
+  categoryId   Int
+  category     Category        @relation(fields: [categoryId], references: [id])
+  orderItems   OrderProducts[]
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
 }
 
 model Order {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String? //adicional
-  total     Float
-  date      DateTime @default(now())
-  status    Boolean   @default(false)
-  orderReadyAt DateTime?
+  id            Int             @id @default(autoincrement())
+  name          String
+  email         String? //adicional
+  total         Float
+  date          DateTime        @default(now())
+  status        Boolean         @default(false)
+  orderReadyAt  DateTime?
   orderProducts OrderProducts[]
 }
 
 model OrderProducts {
-  id        Int      @id @default(autoincrement())
+  id        Int     @id @default(autoincrement())
   orderId   Int
-  order     Order     @relation(fields: [orderId], references: [id])
+  order     Order   @relation(fields: [orderId], references: [id])
   productId Int
-  product  Product   @relation(fields: [productId], references: [id])
-  quantity Int
+  product   Product @relation(fields: [productId], references: [id])
+  quantity  Int
+}
+
+model SiteSettings {
+  id             Int      @id @default(autoincrement())
+  title          String?
+  subtitle       String?
+  statusText     String?
+  address        String?
+  phone          String?
+  instagramUrl   String?
+  facebookUrl    String?
+  uberEatsUrl    String?
+  wazeUrl        String?
+  whatsappNumber String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }

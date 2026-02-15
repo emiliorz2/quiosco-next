@@ -12,22 +12,22 @@ export default function ProductCard({ product }: ProductCardProps) {
     const imagePath = getImagePath(product.image)
 
     return (
-        <div className="border bg-white">
-            <Image
-                src={imagePath}
-                alt={`Product platillo ${product.name}`}
-                width={400}
-                height={500}
-            // quality={100} Default 75
-            />
-            <div className="p-5">
-                <h3 className="2xl font-bold">{product.name}</h3>
-                <p className="mt-5 font-black text-4xl text-amber-500">
+        <div className="mutz-card group overflow-hidden">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-t-xl">
+                <Image
+                    src={imagePath}
+                    alt={`Product platillo ${product.name}`}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-200 group-hover:scale-105"
+                />
+            </div>
+            <div className="space-y-3 p-5">
+                <h3 className="mutz-item-title">{product.name}</h3>
+                <p className="mutz-price text-lg">
                     {formatCurrency(product.price)}
                 </p>
-                <AddProductButton
-                    product={product}
-                />
+                <AddProductButton product={product} />
             </div>
         </div>
     )

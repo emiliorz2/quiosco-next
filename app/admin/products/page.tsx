@@ -27,12 +27,17 @@ async function getProducts(page: number, pageSize: number) {
 
 export type ProductsWithCategory = Awaited<ReturnType<typeof getProducts>> //typescript infiere lo q retorna la funcion
 
-export default async function ProductsPage({searchParams}: {searchParams: {page : string}}) {
+type ProductsPageProps = {
+  searchParams: Promise<{ page?: string }>
+}
 
-  const page = +searchParams.page || 1;
+export default async function ProductsPage({searchParams}: ProductsPageProps) {
+  const { page: pageParam } = await searchParams
+
+  const page = Number(pageParam) || 1;
   const pageSize = 10;
 
-  if(page < 0) redirect('/admin/products')
+  if(page < 1) redirect('/admin/products')
 
   //esto hace q las consultas sean paralelas
   const productsData =  getProducts(page, pageSize);
@@ -49,6 +54,7 @@ export default async function ProductsPage({searchParams}: {searchParams: {page 
 
   return (
     <>
+      <p className="mutz-subtitle mb-2">Mutz Pizzeria</p>
       <Heading>
         Administrar productos
       </Heading>
@@ -56,7 +62,7 @@ export default async function ProductsPage({searchParams}: {searchParams: {page 
       <div className="flex flex-col lg:flex-row lg:justify-between gap-5">
         <Link
           href={'/admin/products/new'}
-          className="bg-amber-400 w-full lg:w-auto text-xl py-3 px-10 text-center font-bold cursor-pointer"
+          className="mutz-btn-primary w-full cursor-pointer lg:w-auto"
         >Crear Producto</Link>
 
         <ProductSearchForm />

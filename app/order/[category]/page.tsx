@@ -9,21 +9,33 @@ async function getProducts(category: string) {
       category: {
         slug: category
       }
-    }
+    },
+    orderBy: [
+      {
+        displayOrder: "asc",
+      },
+      {
+        name: "asc",
+      },
+    ],
   })
   return products
 }
 
-export default async function OrderPage({params}: {params: {category: string}}) {
-  const products = await getProducts(params.category)
+type OrderPageProps = {
+  params: Promise<{ category: string }>
+}
+
+export default async function OrderPage({ params }: OrderPageProps) {
+  const { category } = await params
+  const products = await getProducts(category)
 
   return (
     <>
-      <Heading>
-        Elige y perzonaliza tu pedido
-      </Heading>
+      <p className="mutz-subtitle mb-2">Mutz Pizzeria</p>
+      <Heading>Elige y personaliza tu pedido</Heading>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 items-start">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

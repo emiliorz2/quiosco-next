@@ -2,7 +2,6 @@
 
 import { prisma } from "@/src/lib/prisma"
 import { OrderSchema } from "@/src/schema"
-import { error } from "console"
 
 export async function createOrder(data : unknown) {
     // Create the order

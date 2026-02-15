@@ -25,23 +25,23 @@ export default function ImageUpload({image} : {image: string | undefined}) {
             {({ open }) => (
                 <>
                     <div className='space-y-2'>
-                        <label className='text-slate-800'>Imagen Producto</label>
+                        <label className='mutz-subtitle block'>Imagen del producto</label>
                         <div
-                            className='relative cursor-pointer hover:opacity-70 transition p-10 border-neutral-300 flex flex-col justify-center items-center gap-4 text-neutral-600 bg-slate-100 '
+                            className='relative flex cursor-pointer flex-col items-center justify-center gap-4 rounded-xl border border-[#2A2A2A] bg-black/30 p-10 text-[#C7C0B5] transition hover:border-[#E44232]/70 hover:bg-white/5'
                             onClick={() => open()}
                         >
                             <TbPhotoPlus
                                 size={50}
                             />
-                            <p className='text-lg font-semibold'>Agregar Imagen</p>
+                            <p className='text-sm font-semibold uppercase tracking-[0.2em]'>Agregar imagen</p>
 
                             {imageUrl && (
                                 <div
-                                    className='absolute inset-0 w-full h-full'
+                                    className='absolute inset-0 h-full w-full overflow-hidden rounded-xl'
                                 >
                                     <Image
                                         fill
-                                        style={{objectFit: 'contain'}}
+                                        style={{objectFit: 'cover'}}
                                         src={imageUrl}
                                         alt='Imagen de Producto'
                                     />
@@ -52,13 +52,13 @@ export default function ImageUpload({image} : {image: string | undefined}) {
 
                     {image && !imageUrl && (
                         <div className='space-y-2'>
-                            <label>Imagen Actual:</label>
-                            <div className='relative w-64 h-64'>
+                            <label className='mutz-subtitle block'>Imagen actual</label>
+                            <div className='relative h-48 w-64 overflow-hidden rounded-xl border border-[#2A2A2A]'>
                                 <Image
                                     fill
                                     src={getImagePath(image)}
                                     alt="Imagen Producto"
-                                    style={{objectFit: 'contain'}}
+                                    style={{objectFit: 'cover'}}
                                 />
                             </div>
                         </div>

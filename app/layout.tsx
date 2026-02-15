@@ -1,11 +1,20 @@
 import type { Metadata } from "next";
+import { Outfit, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+});
 
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+});
 
 export const metadata: Metadata = {
-  title: "Quiosco Next.js con App Router y Prisma",
-  description: "Quiosco Next.js con App Router y Prisma",
+  title: "Mutz Pizzeria",
+  description: "Pizza napoletana artesanal en Heredia, Costa Rica.",
 };
 
 export default function RootLayout({
@@ -14,10 +23,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`bg-gray-100`}
-      >
+    <html lang="es">
+      <body className={`${outfit.variable} ${playfair.variable}`}>
         {children}
       </body>
     </html>

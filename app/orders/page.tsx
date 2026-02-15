@@ -14,15 +14,18 @@ export default function OrdersPage() {
         refreshInterval: 1000,
         revalidateOnFocus: false,
     })
-    if (isLoading) return <p>Cargando...</p>
+    if (isLoading) return <p className="mutz-description p-6">Cargando...</p>
     if (data) return (
-        <>
-            <h1 className="text-center mt-20 text-6xl font-black">Ordenes Listas</h1>
+        <div className="mutz-shell min-h-screen p-6">
+            <p className="mutz-subtitle text-center">Mutz Pizzeria</p>
+            <h1 className="mutz-title mt-3 text-center">Ordenes Listas</h1>
 
-            <Logo />
+            <div className="mt-8">
+                <Logo />
+            </div>
 
             {data.length ? (
-                <div className="grid grid-cols-2 gap-5 max-w-5xl mx-auto mt-10">
+                <div className="mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-5 md:grid-cols-2">
                     {data.map(order => (
                         <LatestOrderItem
                             key={order.id}
@@ -30,7 +33,7 @@ export default function OrdersPage() {
                         />
                     ))}
                 </div>
-            ) : <p className="text-center my-10">No hay ordenes listas</p>}
-        </>
+            ) : <p className="mutz-description my-10 text-center">No hay ordenes listas</p>}
+        </div>
     )
 }

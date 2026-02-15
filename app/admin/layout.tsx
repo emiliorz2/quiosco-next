@@ -7,18 +7,18 @@ export default async function AdminLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <>
-            <div className="md:flex">
-                <aside className="md:w-72 md:h-screen bg-white">
+        <div className="mutz-shell">
+            <div className="relative md:flex">
+                <aside className="md:h-screen md:w-80 border-r border-[#2A2A2A] bg-black/70 backdrop-blur-sm">
                     <AdminSidebar />
                 </aside>
 
-                <main className="md:flex-1 md:h-screen md:overflow-y-scroll bg-gray-100 p-5">
+                <main className="md:h-screen md:flex-1 md:overflow-y-scroll p-5 lg:p-8">
                     {children}
                 </main>
             </div>
 
             <ToastNotification />
-        </>
+        </div>
     )
 }

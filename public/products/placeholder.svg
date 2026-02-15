@@ -1,0 +1,9 @@
+<svg width="320" height="320" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="160" cy="160" r="160" fill="#E04B37"/>
+  <circle cx="160" cy="160" r="140" fill="#111111"/>
+  <circle cx="160" cy="160" r="126" stroke="#F5F1E6" stroke-width="2" stroke-opacity="0.35"/>
+  <path d="M100 127C122 106 157 102 183 116C203 127 216 148 221 171H191C188 161 181 151 171 145C158 136 140 138 129 149L100 127Z" fill="#E4D132"/>
+  <circle cx="193" cy="137" r="10" fill="#3FA86B"/>
+  <text x="160" y="206" text-anchor="middle" fill="#F5F1E6" font-size="54" font-family="Georgia, serif" font-weight="700" letter-spacing="4">MUTZ</text>
+  <text x="160" y="232" text-anchor="middle" fill="#D0C8BA" font-size="16" font-family="Arial, sans-serif" letter-spacing="6">PIZZERIA</text>
+</svg>

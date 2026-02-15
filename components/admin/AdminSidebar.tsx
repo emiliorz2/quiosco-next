@@ -1,29 +1,24 @@
-import Logo from "../ui/Logo"
-import AdminRoute from "./AdminRoute"
+import Logo from "../ui/Logo";
+import AdminRoute from "./AdminRoute";
 
 const adminNavigation = [
-    {url: '/admin/orders', text: 'Ordenes', blank: false},
-    {url: '/admin/products', text: 'Productos', blank: false},
-    {url: '/order/cafe', text: 'Ver Quiosco', blank: true},
-]
+  { url: "/admin/orders", text: "Ordenes", blank: false },
+  { url: "/admin/products", text: "Productos", blank: false },
+  { url: "/order/cafe", text: "Ver Quiosco", blank: true },
+];
 
 export default function AdminSidebar() {
-
-    return (
-        <>
-            <Logo />
-            <div className="space-y-3 ">
-                <p className="mt-10 uppercase font-bold text-sm text-gray-600 text-center">Navegación</p>
-                <nav className="flex flex-col">
-                    {adminNavigation.map((link) => (
-                        <AdminRoute
-                        key={link.url}
-                        link={link}
-                        />
-                    ))}
-                </nav>
-            </div>
-        </>
-
-    )
+  return (
+    <div className="p-5">
+      <Logo />
+      <div className="mt-6 space-y-4">
+        <p className="mutz-subtitle text-center">Panel de administracion</p>
+        <nav className="flex flex-col gap-2">
+          {adminNavigation.map((link) => (
+            <AdminRoute key={link.url} link={link} />
+          ))}
+        </nav>
+      </div>
+    </div>
+  );
 }

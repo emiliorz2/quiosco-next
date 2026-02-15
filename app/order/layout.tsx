@@ -10,11 +10,11 @@ export default function RootLayout({
   }>) {
 
     return(
-        <>
-            <div className="md:flex">
+        <div className="mutz-shell">
+            <div className="relative md:flex">
                 <OrderSidebar />
 
-                <main className="md:flex-1 md:h-screen md:overflow-y-scroll p5">
+                <main className="md:h-screen md:flex-1 md:overflow-y-scroll p-5 lg:p-8">
                     {children}
                 </main>
 
@@ -22,7 +22,7 @@ export default function RootLayout({
             </div>
 
             <ToastNotification />
-        </>
+        </div>
     )
 
   }

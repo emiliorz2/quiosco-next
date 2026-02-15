@@ -18,11 +18,17 @@ async function getProductById(id: number) {
 }
 
 
-export default async function EditProductsPage({params}: {params: {id: string}}) {
-    const product = await getProductById(parseInt(params.id))
+type EditProductsPageProps = {
+    params: Promise<{ id: string }>
+}
+
+export default async function EditProductsPage({params}: EditProductsPageProps) {
+    const { id } = await params
+    const product = await getProductById(parseInt(id))
     
   return (
     <>
+        <p className="mutz-subtitle mb-2">Mutz Pizzeria</p>
         <Heading>Editar Producto : {product.name}</Heading>
 
         <GoBackButton />

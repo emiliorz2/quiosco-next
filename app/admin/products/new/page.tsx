@@ -8,6 +8,7 @@ import React from 'react'
 export default function CreateProductPage() {
   return (
     <>
+      <p className="mutz-subtitle mb-2">Mutz Pizzeria</p>
       <Heading>Agregar Nuevo producto</Heading>
 
       <AddProductForm >

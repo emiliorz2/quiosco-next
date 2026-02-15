@@ -44,7 +44,7 @@ export default function EditProductForm({children}: {children: React.ReactNode})
         router.push('/admin/products')
     }
   return (
-    <div className="bg-white mt-10 px-5 py-10 rounded-md shadow-md max-w-3xl mx-auto">
+    <div className="mutz-panel mx-auto mt-8 max-w-3xl px-5 py-8">
         <form
         className="space-y-5"
         action={handleSubmit}
@@ -53,7 +53,7 @@ export default function EditProductForm({children}: {children: React.ReactNode})
 
             <input 
             type="submit" 
-            className="bg-indigo-600 hover:bg-indigo-800 text-white w-full mt-5 p-3 uppercase font-bold rounded-md cursor-pointer"
+            className="mutz-btn-primary mt-5 cursor-pointer"
             value={'Guardar Cambios'}
             />
 

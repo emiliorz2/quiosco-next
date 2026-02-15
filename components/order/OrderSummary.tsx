@@ -43,11 +43,13 @@ export default function OrderSummary() {
   }
 
   return (
-    <aside className="lg:h-screen lg:overflow-y-scroll md:w-64 lg:w-96 p-5">
-      <h1 className="text-4xl text-center font-black">Mi pedido</h1>
+    <aside className="md:w-80 lg:h-screen lg:w-96 lg:overflow-y-scroll p-5">
+      <div className="mutz-panel p-5">
+      <h2 className="mutz-section-title text-center">Mi pedido</h2>
+      <p className="mutz-hint mt-1 text-center">Resumen en CRC</p>
 
-      {order.length === 0 ? <p className="text-center my-10">No hay productos en tu pedido</p> : (
-        <div className="mt-5">
+      {order.length === 0 ? <p className="mutz-description my-10 text-center">No hay productos en tu pedido</p> : (
+        <div className="mt-5 space-y-4">
           {order.map((item) => (
             <ProductDetails
               key={item.id}
@@ -55,9 +57,9 @@ export default function OrderSummary() {
             />
           ))}
 
-          <p className="text-2xl mt-20 text-center">
+          <p className="mt-8 text-center text-lg font-semibold text-[#D0C8BA]">
             Total a Pagar: {''}
-            <span className="font-black text-amber-500">
+            <span className="ml-1 text-xl font-black text-[#E44232]">
               {formatCurrency(total)}
             </span>
           </p>
@@ -68,13 +70,13 @@ export default function OrderSummary() {
           >
 
             <input type="text"
-            className="py-2 rounded border border-gray-300 w-full text-center"
+            className="mutz-input text-center"
             placeholder="Nombre"
             name="name"
             />
 
             <input type="submit"
-            className="py-2 rounded uppercase text-white bg-black w-full text-center cursor-pointer font-bold"
+            className="mutz-btn-primary cursor-pointer"
             value="Pagar"
             />
             
@@ -82,6 +84,7 @@ export default function OrderSummary() {
 
         </div>
       )}
+      </div>
     </aside>
   )
 }

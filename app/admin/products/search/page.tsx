@@ -20,12 +20,19 @@ async function searchProducts(search: string) {
     return products
 }
 
-export default async function SearchPage({ searchParams }: { searchParams: { search: string } }) {
-    const products = await searchProducts(searchParams.search)
+type SearchPageProps = {
+    searchParams: Promise<{ search?: string | string[] }>
+}
+
+export default async function SearchPage({ searchParams }: SearchPageProps) {
+    const { search } = await searchParams
+    const searchTerm = Array.isArray(search) ? search[0] : (search ?? '')
+    const products = await searchProducts(searchTerm)
     return (
         <>
+            <p className="mutz-subtitle mb-2">Mutz Pizzeria</p>
             <Heading>
-                Resultados de busqueda: {searchParams.search}
+                Resultados de busqueda: {searchTerm}
             </Heading>
 
             <div className="flex flex-col lg:flex-row lg:justify-end gap-5">
@@ -39,7 +46,7 @@ export default async function SearchPage({ searchParams }: { searchParams: { sea
                     products={products}
                 />
             ):(
-                <p className="text-center text-lg">No se encontraron productos</p>
+                <p className="mutz-description text-center text-lg">No se encontraron productos</p>
             )}
         </>
     )

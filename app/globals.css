@@ -2,3 +2,113 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --mutz-black: #000000;
+  --mutz-red: #e04b37;
+  --mutz-red-price: #e44232;
+  --mutz-cream: #f5f1e6;
+  --mutz-cream-medium: #d0c8ba;
+  --mutz-gray-warm: #c7c0b5;
+  --mutz-gray-muted: #a79e90;
+  --mutz-border-dark: #2a2a2a;
+  --mutz-surface-card: #151515;
+  --mutz-modal-border: #333333;
+  --mutz-yellow-new: #e4d132;
+  --mutz-green-veggie: #3fa86b;
+}
+
+@layer base {
+  html,
+  body {
+    min-height: 100%;
+  }
+
+  body {
+    @apply bg-black antialiased text-[var(--mutz-cream)];
+    font-family: var(--font-outfit), sans-serif;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-playfair), serif;
+  }
+}
+
+@layer components {
+  .mutz-shell {
+    @apply relative min-h-screen;
+  }
+
+  .mutz-shell::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-image: url("/pizza-bg.jpeg"), url("/products/pizzas_01.jpg");
+    background-position: center;
+    background-size: cover;
+    opacity: 0.2;
+  }
+
+  .mutz-shell::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      180deg,
+      rgb(0 0 0 / 0.9) 0%,
+      rgb(0 0 0 / 0.95) 50%,
+      #000000 100%
+    );
+  }
+
+  .mutz-panel {
+    @apply rounded-xl border border-[#333333] bg-[#151515]/95 shadow-lg shadow-black/50;
+  }
+
+  .mutz-card {
+    @apply rounded-xl border border-[#2A2A2A] bg-black/30 transition-all duration-200 hover:-translate-y-1 hover:border-[#E44232]/70 hover:shadow-lg hover:shadow-black/50;
+  }
+
+  .mutz-title {
+    @apply text-3xl font-extrabold uppercase tracking-wide text-[#F5F1E6];
+  }
+
+  .mutz-subtitle {
+    @apply text-sm font-semibold uppercase tracking-[0.25em] text-[#D0C8BA];
+  }
+
+  .mutz-section-title {
+    @apply text-2xl font-semibold text-[#F5F1E6];
+  }
+
+  .mutz-item-title {
+    @apply text-lg font-semibold text-[#F5F1E6];
+  }
+
+  .mutz-price {
+    @apply text-sm font-bold text-[#E44232];
+  }
+
+  .mutz-description {
+    @apply text-sm text-[#C7C0B5];
+  }
+
+  .mutz-hint {
+    @apply text-xs uppercase tracking-[0.25em] text-[#A79E90];
+  }
+
+  .mutz-input {
+    @apply w-full rounded-lg border border-[#333333] bg-black/40 px-3 py-2 text-[#F5F1E6] placeholder:text-[#A79E90] focus:border-[#E44232] focus:outline-none;
+  }
+
+  .mutz-btn-primary {
+    @apply w-full rounded-lg bg-[#E04B37] px-4 py-3 text-center text-sm font-bold uppercase tracking-wide text-black transition hover:bg-[#E44232];
+  }
+
+  .mutz-btn-secondary {
+    @apply rounded-lg border border-[#2A2A2A] bg-white/5 px-4 py-3 text-sm font-semibold uppercase tracking-wide text-[#F5F1E6] transition hover:border-[#E44232]/70 hover:bg-white/10;
+  }
+}

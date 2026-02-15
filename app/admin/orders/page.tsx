@@ -15,17 +15,18 @@ export default function OrdersPage() {
     revalidateOnFocus: false
   })
 
-  if(isLoading) return <p>Cargando...</p>
+  if(isLoading) return <p className="mutz-description">Cargando...</p>
 
   if(data) return (
     <>
+        <p className="mutz-subtitle mb-2">Mutz Pizzeria</p>
         <Heading>
-            Administrar ordernes
+            Administrar ordenes
         </Heading>
 
 
         {data.length ? (
-            <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-5 mt-5">
+            <div className="mt-5 grid grid-cols-1 gap-5 lg:grid-cols-2 2xl:grid-cols-3">
                 {data.map((order) => (
                     <OrderCard
                         key={order.id}
@@ -33,7 +34,7 @@ export default function OrdersPage() {
                     />
                 ))}
             </div>
-        ): <p className="text-center"> No hay ordenes pendientes</p> }
+        ): <p className="mutz-description text-center">No hay ordenes pendientes</p> }
     </>
   )
 }
